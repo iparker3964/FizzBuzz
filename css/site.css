@@ -57,6 +57,16 @@ h1,h2,h3,h4,h5,h6{
 .checkList >li i{
     color: var(--secondary-color);
 }
+.Fizz{
+    color:darkgreen;
+}
+.Buzz{
+    color:darkblue;
+}
+.FizzBuzz{
+    color:red;
+    font-weight:bold;
+}
 code[class*="language-"],
 pre[class*="language-"] {
 white-space: pre-wrap;

@@ -10,7 +10,7 @@ function getValues(){
 
     if(Number.isInteger(fizzVal) && Number.isInteger(buzzVal)){
         //call fizzBuzz
-        let fbArray = fizBuzz(fizzVal,buzzVal);
+        let fbArray = fizzBuzz(fizzVal,buzzVal);
         displayData(fbArray);
     }else{
         alert("You must enter a integer");
@@ -38,13 +38,13 @@ function fizzBuzz(fizzVal, buzzVal){
         //finally if above checks result in not true add number into the array
 
         if(i % fizzVal == 0 && i % buzzVal == 0){
-            array.push("fizzBuzz");
+            array.push("FizzBuzz");
         }
         else if(i % fizzVal != 0 && i % buzzVal == 0){
-            array.push("buzz");
+            array.push("Buzz");
         }
         else if(i % fizzVal == 0 && i % buzzVal != 0){
-            array.push("fizz");
+            array.push("Fizz");
         }
         else{
             array.push(i);
@@ -69,10 +69,26 @@ function displayData(fbArray){
         let tblRow = document.importNode(templateRow.content,true);
 
         //get td from content and put into array
-        let rowCols = tblRow.quarySelectorAll("td");
-        
+        let rowCols = tblRow.querySelectorAll("td");
+        rowCols[0].classList.add(fbArray[i]);
+        rowCols[0].textContent = fbArray[i];
+
+        rowCols[1].classList.add(fbArray[i + 1]);
+        rowCols[1].textContent = fbArray[i + 1];
+
+        rowCols[2].classList.add(fbArray[i + 2]);
+        rowCols[2].textContent = fbArray[i + 2];
+
+        rowCols[3].classList.add(fbArray[i + 3]);
+        rowCols[3].textContent = fbArray[i + 3];
+
+        rowCols[4].classList.add(fbArray[i + 4]);
+        rowCols[4].textContent = fbArray[i + 4];
+
+        //add all the rows to the table.
+        tblBody.appendChild(tblRow);
     }
-    //add all the rows to the table.
+ 
 
 
 }
