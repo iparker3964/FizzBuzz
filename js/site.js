@@ -10,15 +10,12 @@ function getValues(){
 
     if(Number.isInteger(fizzVal) && Number.isInteger(buzzVal)){
         //call fizzBuzz
-        let fbArray = fizzBuzz(fizzVal,buzzVal);
+        let fbArray = fizzBuzzC(fizzVal,buzzVal);
+        //call display data and write values to the screen
         displayData(fbArray);
     }else{
         alert("You must enter a integer");
     }
-
-    //call fizzbuzz
-
-    //call display data and write values to the screen
 
 }
 
@@ -54,7 +51,44 @@ function fizzBuzz(fizzVal, buzzVal){
 
     return array;
 }
+//alternate method 2
+function fizzBuzzB(fizzVal,buzzVal){
+    let array = [];
+    let isFizz = false;
+    let isBuzz = false;
 
+    for(let i = 1; i <= 100; i++){
+        isFizz = i % fizzVal == 0;
+        isBuzz = i % buzzVal == 0;
+
+        switch(true){
+            case isFizz == true && isBuzz == true:
+                array.push("FizzBuzz");
+                break;
+            case isFizz == true:
+            array.push("Fizz");
+            break;
+            case isBuzz == true:
+                array.push("Buzz");
+                break;
+            default:
+                 array.push(i);
+                 break;
+        }
+    }
+    return array;
+}
+//alternate method 3 using ternary operator
+function fizzBuzzC(fizzVal,buzzVal){
+    let array = [];
+    
+    for(let i = 1; i <= 100; i++){
+        //blank space is false and a number char is true
+        let val = ((i % fizzVal == 0 ? "Fizz" : '') + (i % buzzVal == 0 ? "Buzz" : '') || i);
+        array.push(val);
+    }
+    return array;
+}
 function displayData(fbArray){
     //get the table body element from the page
     let tblBody = document.getElementById("results");

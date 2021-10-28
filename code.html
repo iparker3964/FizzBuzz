@@ -54,17 +54,118 @@
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function helloWorld(){
-                            alert("hello world!");
+                    //get values from the users 
+                    function getValues(){
+                        //get user values from page
+                        let fizzVal = document.getElementById("fizzValue").value;
+                        let buzzVal = document.getElementById("buzzValue").value;
+                    
+                        //check that values are integers
+                        fizzVal = parseInt(fizzVal);
+                        buzzVal = parseInt(buzzVal);
+                    
+                        if(Number.isInteger(fizzVal) && Number.isInteger(buzzVal)){
+                            //call fizzBuzz
+                            let fbArray = fizzBuzz(fizzVal,buzzVal);
+                            //call display data and write values to the screen
+                            displayData(fbArray);
+                        }else{
+                            alert("You must enter a integer");
                         }
+                    
+                    }
+                    
+                    function fizzBuzz(fizzVal, buzzVal){
+                        //intialize array
+                        let array = [];
+                    
+                        //loop from 1 to 100
+                        for(let i = 1; i <= 100; i++){
+                    
+                             //check if divisible by fizz value and buzz value
+                    
+                            //check to see if divisible by fizz value 
+                        
+                            //check to see if divisible by buzz value 
+                    
+                            //finally if above checks result in not true add number into the array
+                    
+                            if(i % fizzVal == 0 && i % buzzVal == 0){
+                                array.push("FizzBuzz");
+                            }
+                            else if(i % fizzVal != 0 && i % buzzVal == 0){
+                                array.push("Buzz");
+                            }
+                            else if(i % fizzVal == 0 && i % buzzVal != 0){
+                                array.push("Fizz");
+                            }
+                            else{
+                                array.push(i);
+                            }
+                            
+                        }
+                    
+                        return array;
+                    }
+
+                    function displayData(fbArray){
+                        //get the table body element from the page
+                        let tblBody = document.getElementById("results");
+                    
+                        //get the template row
+                        let templateRow = document.getElementById("fbTemplate");
+                    
+                        //clear the table first
+                        tblBody.innerHTML = "";
+                        //loop over the array and create a table row for each item.
+                        for(let i = 0; i < fbArray.length; i++){
+                            let tblRow = document.importNode(templateRow.content,true);
+                    
+                            //get td from content and put into array
+                            let rowCols = tblRow.querySelectorAll("td");
+                            rowCols[0].classList.add(fbArray[i]);
+                            rowCols[0].textContent = fbArray[i];
+                    
+                            rowCols[1].classList.add(fbArray[i + 1]);
+                            rowCols[1].textContent = fbArray[i + 1];
+                    
+                            rowCols[2].classList.add(fbArray[i + 2]);
+                            rowCols[2].textContent = fbArray[i + 2];
+                    
+                            rowCols[3].classList.add(fbArray[i + 3]);
+                            rowCols[3].textContent = fbArray[i + 3];
+                    
+                            rowCols[4].classList.add(fbArray[i + 4]);
+                            rowCols[4].textContent = fbArray[i + 4];
+                    
+                            //add all the rows to the table.
+                            tblBody.appendChild(tblRow);
+                        }
+                     
+                    
+                    
+                    }
                     </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p>The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message "hello world!".</p>
+                <p>The Code is structured in three functions.</p>
+                <h5>getValues</h5>
+                <p>Start by getting the fizz and buzz values from the page using document.getElementById. Check if values are integers using paseInt. Pass fizz and buzz value into function fizzBuzz. Create variable
+                    fbArray to hold array values returned from fizzBuzz function. Pass fbArray variable into function displayData that displays results on the page.
+                </p>
+                <h5>fizzBuzz</h5>
+                <p>
+                    Initialize array variable. Use a for loop to cycle from 1 to 100. User operator % to check if loop index is divisible by fizz value or buzz value. If divisible by both fizz value and buzz value push FizzBuzz on to the array. If divisible by fizz value push Fizz on to array. If divisible by buzz
+                    value push Buzz on to the array.
+                </p>
+                <h5>displayData</h5>
+                <p>
+                    Takes in parameter fbArray that contains array values. Get table body element from the page using getElementById. Get the template row from the page using getElementById. We first clear the table 
+                    tblBody.innerHtml = "". Use a for loop to loop over array fbArray. Get template row content using importNode and store this into variable tblRow. Get td from content using tblRow.querySelectorAll("td"). This returns an array of td values.
+                    Add Fizz or Buzz class to rowsCols value using rowCols[0].classList.add(fbArray[i]). Add array values to table content rowCols[index].textContent = fbArray[index].
+                    Finally add rows to the table tblBody.appendChild(tblRow);
+                </p>
             </div>
         </div>
     </div>
